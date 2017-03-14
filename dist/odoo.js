@@ -343,7 +343,7 @@ angular.module('odoo').provider('jsonRpc', function jsonRpcProvider() {
 			function preflight() {
 				//preflightPromise is a kind of cache and is set only if the request succeed
 				return preflightPromise || http('/web/webclient/version_info', {}).then(function (reason) {
-					odooRpc.shouldManageSessionId = (reason.result.server_serie < "8"); //server_serie is string like "7.01"
+					odooRpc.shouldManageSessionId = (reason.result.server_serie < 8); //server_serie is string like "7.01"
 					preflightPromise = $q.when(); //runonce
 				});
 			}

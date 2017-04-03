@@ -350,6 +350,7 @@ angular.module('odoo').provider('jsonRpc', function jsonRpcProvider() {
 
 			return preflight().then(function () {
 				return http(url, params).then(function(response) {
+					response.result = response.result || {};    // Agregado
 					var subRequests = [];
 					if (response.result.type === "ir.actions.act_proxy") {
 						angular.forEach(response.result.action_list, function(action) {
